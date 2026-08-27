@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — MotorStar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Sidebar Navigation (7 Links) -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">🏍️ MotorStar</div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html" class="active">📊 Dashboard</a></li>
+        <li><a href="inventory.html">📦 Inventory</a></li>
+        <li><a href="sales.html">🛒 Sales</a></li>
+        <li><a href="reports.html">📈 Reports</a></li>
+        <li><a href="settings.html">⚙️ Settings</a></li>
+        <li><a href="about.html">ℹ️ About</a></li>
+        <li><a href="#" id="logoutLink">🚪 Logout</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <span class="menu-toggle" id="menuBtn">☰</span>
+        <h1>Dashboard Overview</h1>
+        <span id="userEmail"></span>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Total Motorcycle Models</h3>
+          <div class="num" id="totalModels">0</div>
+        </div>
+        <div class="card">
+          <h3>Total Units in Stock</h3>
+          <div class="num" id="totalStock">0</div>
+        </div>
+        <div class="card">
+          <h3>Low Stock Items</h3>
+          <div class="num" id="lowStock" style="color:#dc2626">0</div>
+        </div>
+        <div class="card">
+          <h3>Total Sales</h3>
+          <div class="num" id="totalSales">₱0</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
