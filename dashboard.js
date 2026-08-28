@@ -1,5 +1,5 @@
-import { protectPage, logoutUser } from './js/auth.js';
-import { db } from './js/firebase-config.js';
+import { protectPage, logoutUser } from './auth.js';
+import { db } from './firebase-config.js';
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 protectPage(); // Block unauthenticated users
