@@ -1,35 +1,70 @@
-<link rel="stylesheet" href="style.css">
-<h1>📦 Inventory Management</h1>
-<button onclick="showForm()" class="success" style="margin: 0.5rem 0;">+ Add New Motorcycle</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory — MotorStar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><img src="images/Motorstar-logo.jpeg" alt=""></div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html">📊 Dashboard</a></li>
+        <li><a href="inventory.html" class="active">📦 Inventory</a></li>
+        <li><a href="#">🛒 Sales</a></li>
+        <li><a href="#">📈 Reports</a></li>
+        <li><a href="#">⚙️ Settings</a></li>
+        <li><a href="#">ℹ️ About</a></li>
+        <li><a href="#" id="logoutLink">🚪 Logout</a></li>
+      </ul>
+    </aside>
 
-<!-- Add/Edit Form -->
-<div id="invForm" class="hidden" style="background:white; padding:1.2rem; border-radius:8px; margin-bottom:1rem;">
-  <h3 id="formTitle">Add Motorcycle</h3>
-  <form id="motorcycleForm">
-    <input type="hidden" id="docId">
-    <label>Model Name</label>
-    <input type="text" id="model" required placeholder="MotorStar X125">
-    <label>Brand</label>
-    <input type="text" id="brand" value="MotorStar" required>
-    <label>Year</label>
-    <input type="number" id="year" value="2025" required>
-    <label>Color</label>
-    <input type="text" id="color" required>
-    <label>Quantity</label>
-    <input type="number" id="quantity" min="0" required>
-    <label>Unit Price (₱)</label>
-    <input type="number" id="price" step="0.01" min="0" required>
-    <button type="submit">Save</button>
-    <button type="button" class="danger" onclick="hideForm()">Cancel</button>
-  </form>
-</div>
+    <main class="main-content">
+      <div class="top-bar">
+        <span class="menu-toggle" id="menuBtn">☰</span>
+        <h1>📦 Inventory Management</h1>
+        <span id="userEmail"></span>
+      </div>
 
-<!-- Inventory Table -->
-<div class="table-container">
-  <table>
-    <thead>
-      <tr><th>Model</th><th>Brand</th><th>Year</th><th>Color</th><th>Qty</th><th>Price</th><th>Actions</th></tr>
-    </thead>
-    <tbody id="invTableBody"></tbody>
-  </table>
-</div>
+      <button onclick="showForm()" class="success">+ Add New Motorcycle</button>
+
+      <!-- Add/Edit Form -->
+      <div id="invForm" class="hidden">
+        <h3 id="formTitle">Add Motorcycle</h3>
+        <form id="motorcycleForm">
+          <input type="hidden" id="docId">
+          <label>Model Name</label>
+          <input type="text" id="model" required>
+          <label>Brand</label>
+          <input type="text" id="brand" value="MotorStar" required>
+          <label>Year</label>
+          <input type="number" id="year" value="2025" required>
+          <label>Color</label>
+          <input type="text" id="color" required>
+          <label>Quantity</label>
+          <input type="number" id="quantity" min="0" required>
+          <label>Unit Price (₱)</label>
+          <input type="number" id="price" step="0.01" min="0" required>
+          <button type="submit">Save</button>
+          <button type="button" class="danger" onclick="hideForm()">Cancel</button>
+        </form>
+      </div>
+
+      <!-- Inventory Table -->
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr><th>Model</th><th>Brand</th><th>Year</th><th>Color</th><th>Qty</th><th>Price</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="invTableBody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="inventory.js"></script>
+</body>
+</html>

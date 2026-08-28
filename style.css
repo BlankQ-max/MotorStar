@@ -64,6 +64,16 @@ body {
   align-items: center;
   gap: 0.5rem;
 }
+/* ===== MOTORSTAR LOGO SIZE FIX ===== */
+.sidebar-header img {
+  max-width: 100%;
+  width: 200px;       /* ← Adjust this number: 150=smaller, 200=larger */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
 .nav-menu { list-style: none; margin-top: 1rem; }
 .nav-menu li a {
   display: block;

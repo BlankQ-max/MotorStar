@@ -5,12 +5,28 @@ import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from "https://
 protectPage();
 
 // Mobile menu & logout
-document.getElementById('menuBtn').onclick = () => document.getElementById('sidebar').classList.toggle('open');
-document.getElementById('logoutLink').onclick = e => { e.preventDefault(); logoutUser(); };
+document.getElementById('menuBtn').onclick = () => {
+  document.getElementById('sidebar').classList.toggle('open');
+};
+document.getElementById('logoutLink').onclick = e => {
+  e.preventDefault();
+  logoutUser();
+};
 document.getElementById('userEmail').textContent = localStorage.getItem('userEmail') || '';
 
-window.showForm = () => { document.getElementById('invForm').classList.remove('hidden'); document.getElementById('formTitle').textContent = "Add Motorcycle"; document.getElementById('motorcycleForm').reset(); document.getElementById('docId').value = ""; };
-window.hideForm = () => document.getElementById('invForm').classList.add('hidden');
+// ==========================================
+// ✅ FUNCTIONS MADE GLOBAL — HTML CAN FIND THEM!
+// ==========================================
+window.showForm = () => {
+  document.getElementById('invForm').classList.remove('hidden');
+  document.getElementById('formTitle').textContent = "Add Motorcycle";
+  document.getElementById('motorcycleForm').reset();
+  document.getElementById('docId').value = "";
+};
+
+window.hideForm = () => {
+  document.getElementById('invForm').classList.add('hidden');
+};
 
 // Load & render inventory
 async function renderInventory() {
@@ -82,4 +98,5 @@ window.deleteItem = async id => {
   }
 };
 
+// ✅ Load inventory on page open
 renderInventory();
