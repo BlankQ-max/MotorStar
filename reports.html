@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports — MotorStar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="/Motorstar-logo.jpeg" alt="MotorStar">
+      </div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html">📊 Dashboard</a></li>
+        <li><a href="inventory.html">📦 Inventory</a></li>
+        <li><a href="sales.html">🛒 Sales</a></li>
+        <li><a href="reports.html" class="active">📈 Reports</a></li>
+        <li><a href="settings.html">⚙️ Settings</a></li>
+        <li><a href="about.html">ℹ️ About</a></li>
+        <li><a href="#" id="logoutLink" onclick="return confirm('Are you sure you want to logout?');">🚪 Logout</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <span class="menu-toggle" id="menuBtn">☰</span>
+        <h1>📈 Reports</h1>
+        <span id="userEmail"></span>
+      </div>
+
+      <!-- Full Inventory Report -->
+      <h3>📋 Full Inventory List</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr><th>Model</th><th>Brand</th><th>Year</th><th>Color</th><th>Stock</th><th>Price (₱)</th><th>Value (₱)</th></tr>
+          </thead>
+          <tbody id="invReportBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Low Stock Report -->
+      <h3 style="margin-top:2rem; color:#dc2626;">⚠️ Low Stock Alert (≤ 5 units)</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr><th>Model</th><th>Stock Left</th><th>Price (₱)</th></tr>
+          </thead>
+          <tbody id="lowStockBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Sales Summary -->
+      <h3 style="margin-top:2rem;">💰 Sales Summary</h3>
+      <div style="background:white; padding:1.2rem; border-radius:8px;">
+        <p><strong>Total Sales Recorded:</strong> <span id="totalSalesCount">0</span></p>
+        <p><strong>Total Revenue:</strong> ₱<span id="totalRevenue">0</span></p>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="reports.js"></script>
+</body>
+</html>

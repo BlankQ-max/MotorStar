@@ -26,4 +26,11 @@ async function loadStats() {
   document.getElementById('totalStock').textContent = totalQty;
   document.getElementById('lowStock').textContent = lowCount;
 }
+
+document.getElementById('logoutLink').onclick = e => {
+  e.preventDefault();
+  if (confirm('Are you sure you want to logout?')) {
+    logoutUser();
+  }
+};
 loadStats();

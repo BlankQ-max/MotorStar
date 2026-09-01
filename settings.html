@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — MotorStar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="Motorstar-logo.jpeg" alt="MotorStar">
+      </div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html">📊 Dashboard</a></li>
+        <li><a href="inventory.html">📦 Inventory</a></li>
+        <li><a href="sales.html">🛒 Sales</a></li>
+        <li><a href="reports.html">📈 Reports</a></li>
+        <li><a href="settings.html" class="active">⚙️ Settings</a></li>
+        <li><a href="about.html">ℹ️ About</a></li>
+        <li><a href="#" id="logoutLink" onclick="return confirm('Are you sure you want to logout?');">🚪 Logout</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <span class="menu-toggle" id="menuBtn">☰</span>
+        <h1>⚙️ Account Settings</h1>
+        <span id="userEmail"></span>
+      </div>
+
+      <!-- Account Info -->
+      <div style="background:white; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem;">
+        <h3>Account Information</h3>
+        <p><strong>Email:</strong> <span id="currentEmail"></span></p>
+        <p><strong>Role:</strong> Inventory Manager</p>
+        <p><strong>Status:</strong> <span style="color:green;">✅ Active</span></p>
+      </div>
+
+      <!-- Change Password -->
+      <div style="background:white; padding:1.5rem; border-radius:8px;">
+        <h3>Change Password</h3>
+        <div id="alertBox"></div>
+        <form id="passwordForm">
+          <label>Current Password</label>
+          <input type="password" id="currentPassword" required placeholder="Enter current password">
+          
+          <label>New Password</label>
+          <input type="password" id="newPassword" required placeholder="Min. 6 characters">
+          
+          <label>Confirm New Password</label>
+          <input type="password" id="confirmPassword" required placeholder="Re-type new password">
+          
+          <button type="submit">Update Password</button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="settings.js"></script>
+</body>
+</html>

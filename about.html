@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — MotorStar Inventory System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="/Motorstar-logo.jpeg" alt="MotorStar">
+      </div>
+      <ul class="nav-menu">
+        <li><a href="dashboard.html">📊 Dashboard</a></li>
+        <li><a href="inventory.html">📦 Inventory</a></li>
+        <li><a href="sales.html">🛒 Sales</a></li>
+        <li><a href="reports.html">📈 Reports</a></li>
+        <li><a href="settings.html">⚙️ Settings</a></li>
+        <li><a href="about.html" class="active">ℹ️ About</a></li>
+        <li><a href="#" id="logoutLink" onclick="return confirm('Are you sure you want to logout?');">🚪 Logout</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <div class="top-bar">
+        <span class="menu-toggle" id="menuBtn">☰</span>
+        <h1>ℹ️ About This System</h1>
+        <span id="userEmail"></span>
+      </div>
+
+      <div style="background:white; padding:2rem; border-radius:8px; line-height:1.8;">
+        <h2 style="color:#b91c1c; margin-bottom:1rem;">🏍️ MotorStar Inventory System</h2>
+        <p><strong>Version:</strong> 1.0.0</p>
+        <p><strong>Course:</strong> IAS101 / CC105</p>
+        <p><strong>Project Type:</strong> Web-Based Inventory Management System</p>
+        <p><strong>Developed For:</strong> MotorStar Motorcycle Store</p>
+
+        <hr style="margin:1.5rem 0; border:none; border-top:1px solid #eee;">
+
+        <h3>📋 System Features (7 Modules)</h3>
+        <ol style="margin-left:1.5rem;">
+          <li><strong>Dashboard</strong> — Overview of total stock, models, and alerts</li>
+          <li><strong>Inventory Management</strong> — Add, Edit, Delete, View motorcycle records</li>
+          <li><strong>Sales Transactions</strong> — Record sales, auto-calculate totals, deduct stock</li>
+          <li><strong>Reports</strong> — Full inventory list, low-stock alerts, sales summary</li>
+          <li><strong>Settings</strong> — View account info, change password securely</li>
+          <li><strong>About</strong> — System information and user guide</li>
+          <li><strong>Login / Logout</strong> — Secure authentication with Firebase</li>
+        </ol>
+
+        <hr style="margin:1.5rem 0; border:none; border-top:1px solid #eee;">
+
+        <h3>🛠️ Technology Stack</h3>
+        <ul style="margin-left:1.5rem;">
+          <li><strong>Frontend:</strong> Pure HTML, CSS, JavaScript</li>
+          <li><strong>Backend & Database:</strong> Firebase (Authentication + Firestore)</li>
+          <li><strong>Design:</strong> Fully Mobile Responsive — Ready for MIT App Inventor</li>
+        </ul>
+
+        <hr style="margin:1.5rem 0; border:none; border-top:1px solid #eee;">
+
+        <h3>📖 Quick User Guide</h3>
+        <ul style="margin-left:1.5rem;">
+          <li>Log in using your assigned inventory manager account</li>
+          <li>Go to Inventory → Click "+ Add New Motorcycle" to stock items</li>
+          <li>Go to Sales → Select model, enter quantity → Save Sale → Stock auto-updates</li>
+          <li>Go to Reports → View full inventory, low-stock items, and sales totals</li>
+          <li>Change password anytime in Settings</li>
+        </ul>
+
+        <hr style="margin:1.5rem 0; border:none; border-top:1px solid #eee;">
+
+        <p style="text-align:center; color:#666; margin-top:1rem;">
+          © 2026 MotorStar Inventory System<br>
+          Submitted for Midterm Examination — September 2026
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="about.js"></script>
+</body>
+</html>

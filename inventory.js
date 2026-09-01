@@ -98,5 +98,12 @@ window.deleteItem = async id => {
   }
 };
 
+document.getElementById('logoutLink').onclick = e => {
+  e.preventDefault();
+  if (confirm('Are you sure you want to logout?')) {
+    logoutUser();
+  }
+};
+
 // ✅ Load inventory on page open
 renderInventory();
