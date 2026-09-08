@@ -69,3 +69,4 @@ document.getElementById('logoutLink').onclick = e => {
     logoutUser();
   }
 };
+

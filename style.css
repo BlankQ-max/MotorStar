@@ -161,6 +161,29 @@ tr:hover { background: #f9fafb; }
 .card h3 { font-size: 0.95rem; color: #6b7280; }
 .card .num { font-size: 2rem; font-weight: bold; color: var(--primary); margin-top: 0.3rem; }
 
+/* ===== PASSWORD EYE TOGGLE STYLES ===== */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+.password-wrapper input {
+  width: 100%;
+  padding-right: 45px; /* Make space for the eye icon */
+}
+.eye-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #6b7280;
+  user-select: none;
+}
+.eye-icon:hover {
+  color: #1f2937;
+}
+
 /* Mobile Responsive — KEY for MIT App */
 @media (max-width: 768px) {
   .sidebar {
