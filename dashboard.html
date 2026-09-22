@@ -9,7 +9,9 @@
 <body>
   <div class="wrapper">
     <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header"><img src="Motorstar-logo.jpeg" alt=""></div>
+      <div class="sidebar-header">
+        <img src="Motorstar-logo.jpeg" alt="MotorStar">
+      </div>
       <ul class="nav-menu">
         <li><a href="dashboard.html" class="active">📊 Dashboard</a></li>
         <li><a href="inventory.html">📦 Inventory</a></li>
@@ -17,17 +19,18 @@
         <li><a href="reports.html">📈 Reports</a></li>
         <li><a href="settings.html">⚙️ Settings</a></li>
         <li><a href="about.html">ℹ️ About</a></li>
-        <li><a href="#" id="logoutLink" onclick="return confirm('Are you sure you want to logout?');">🚪 Logout</a></li>
+        <li><a href="#" id="logoutLink">🚪 Logout</a></li>
       </ul>
     </aside>
 
     <main class="main-content">
       <div class="top-bar">
         <span class="menu-toggle" id="menuBtn">☰</span>
-        <h1>Dashboard Overview</h1>
+        <h1>📊 Dashboard Overview</h1>
         <span id="userEmail"></span>
       </div>
 
+      <!-- Stats Cards -->
       <div class="cards">
         <div class="card">
           <h3>Total Models</h3>
@@ -40,6 +43,31 @@
         <div class="card">
           <h3>Low Stock</h3>
           <div class="num" id="lowStock" style="color:#dc2626">0</div>
+        </div>
+        <div class="card">
+          <h3>Total Sales</h3>
+          <div class="num" id="totalSales" style="color:#16a34a;">₱0</div>
+        </div>
+      </div>
+
+      <!-- ACTIVITY HISTORY SECTION -->
+      <div style="margin-top: 2rem;">
+        <h2 style="margin-bottom: 1rem;">📋 Recent Activity</h2>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Action</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="activityBody">
+              <tr>
+                <td colspan="3" style="text-align:center; padding:1rem; color:#666;">Loading activity...</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </main>

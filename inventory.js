@@ -1,8 +1,14 @@
 import { protectPage, logoutUser } from './auth.js';
 import { db } from './firebase-config.js';
+import { logActivity } from './dashboard.js';
 import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 protectPage();
+
+// ==========================================
+// 🔐 CONFIGURE YOUR SECRET CODE HERE
+// ==========================================
+const SECRET_CODE = "MotorStar2026"; // ✅ CHANGE THIS TO YOUR OWN CODE!
 
 // Mobile menu & logout
 document.getElementById('menuBtn').onclick = () => {
@@ -10,13 +16,13 @@ document.getElementById('menuBtn').onclick = () => {
 };
 document.getElementById('logoutLink').onclick = e => {
   e.preventDefault();
-  logoutUser();
+  if (confirm('Are you sure you want to logout?')) {
+    logoutUser();
+  }
 };
 document.getElementById('userEmail').textContent = localStorage.getItem('userEmail') || '';
 
-// ==========================================
-// ✅ FUNCTIONS MADE GLOBAL — HTML CAN FIND THEM!
-// ==========================================
+// Show/Hide Form
 window.showForm = () => {
   document.getElementById('invForm').classList.remove('hidden');
   document.getElementById('formTitle').textContent = "Add Motorcycle";
@@ -51,9 +57,20 @@ async function renderInventory() {
   });
 }
 
-// Save (Add or Update)
+// Save (Add or Update) — WITH SECRET CODE CHECK
 document.getElementById('motorcycleForm').addEventListener('submit', async e => {
   e.preventDefault();
+
+  // 🔐 VERIFY SECRET CODE FIRST
+  const enteredCode = document.getElementById('secretCode').value.trim();
+  if (enteredCode !== SECRET_CODE) {
+    alert("❌ Invalid Secret Code! Access Denied.");
+    document.getElementById('secretCode').value = "";
+    document.getElementById('secretCode').focus();
+    return; // STOP — does NOT save!
+  }
+
+  // ✅ Code Correct → Proceed to Save
   const data = {
     model: document.getElementById('model').value.trim(),
     brand: document.getElementById('brand').value.trim(),
@@ -63,16 +80,21 @@ document.getElementById('motorcycleForm').addEventListener('submit', async e => 
     price: parseFloat(document.getElementById('price').value)
   };
   const docId = document.getElementById('docId').value;
+
   if (docId) {
     await updateDoc(doc(db, "inventory", docId), data);
+    await logActivity('✏️ Updated', `${data.model} — ${data.quantity} units`);
   } else {
     await addDoc(collection(db, "inventory"), data);
+    await logActivity('➕ Added', `${data.model} — ${data.quantity} units`);
   }
+
+  alert("✅ Saved Successfully!");
   hideForm();
   renderInventory();
 });
 
-// Edit
+// Edit — CLEARS SECRET CODE
 window.editItem = async id => {
   const snap = await getDocs(collection(db, "inventory"));
   const item = snap.docs.find(d => d.id === id);
@@ -87,6 +109,8 @@ window.editItem = async id => {
     document.getElementById('price').value = d.price;
     document.getElementById('formTitle').textContent = "Edit Motorcycle";
     document.getElementById('invForm').classList.remove('hidden');
+    document.getElementById('secretCode').value = ""; // Force re-enter code
+    document.getElementById('secretCode').focus();
   }
 };
 
@@ -94,16 +118,10 @@ window.editItem = async id => {
 window.deleteItem = async id => {
   if (confirm("Delete this record?")) {
     await deleteDoc(doc(db, "inventory", id));
+    await logActivity('🗑️ Deleted', 'Item removed from inventory');
     renderInventory();
   }
 };
 
-document.getElementById('logoutLink').onclick = e => {
-  e.preventDefault();
-  if (confirm('Are you sure you want to logout?')) {
-    logoutUser();
-  }
-};
-
-// ✅ Load inventory on page open
+// Load on open
 renderInventory();

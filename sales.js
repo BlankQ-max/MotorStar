@@ -1,7 +1,7 @@
 import { protectPage, logoutUser } from './auth.js';
 import { db } from './firebase-config.js';
+import { logActivity } from './dashboard.js'; // ← ADD THIS
 import { collection, getDocs, addDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
-
 protectPage();
 
 // Sidebar & Logout
@@ -81,6 +81,7 @@ document.getElementById('salesForm').addEventListener('submit', async e => {
   await updateDoc(doc(db, "inventory", selectedDocId), { quantity: newQty });
 
   alert("✅ Sale recorded! Stock updated.");
+  await logActivity('🛒 Sale', `${item.model} — ${qty} units sold`); // ✅
   document.getElementById('salesForm').reset();
   loadModels();
   loadSalesHistory();
